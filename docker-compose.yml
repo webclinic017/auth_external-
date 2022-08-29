@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    wauth:
+        build: ~/wauth/japronto
+        container_name: wauth
+        restart: always
+        volumes:
+          - ~/wauth/auth.py:/auth.py
+          - ~/wauth/auth.log:/auth.log
+        command: "--script /auth.py"
+        environment:
+          - TZ=America/New_York
+        ports:
+          - 8081:8080
